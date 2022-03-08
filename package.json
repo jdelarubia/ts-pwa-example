@@ -6,8 +6,9 @@
   "scripts": {
     "serve": "live-server --mount=/:./dist --port=8000",
     "watch": "npm-run-all --parallel watch:ts watch:sw:ts watch:js",
-    "bundle": "npm-run-all compile:ts bundle:js",
+    "bundle": "npm-run-all compile:ts compile:ts:sw bundle:js",
     "compile:ts": "tsc",
+    "compile:ts:sw": "tsc --p tsconfig.sw.json",
     "bundle:js": "rollup --config",
     "watch:ts": "tsc --watch",
     "watch:sw:ts": "tsc --p tsconfig.sw.json --watch",
