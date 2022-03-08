@@ -1,0 +1,24 @@
+{
+  "name": "ts-pwa-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "live-server --mount=/:./dist --port=8000",
+    "watch": "npm-run-all --parallel watch:ts watch:sw:ts watch:js",
+    "bundle": "npm-run-all compile:ts bundle:js",
+    "compile:ts": "tsc",
+    "bundle:js": "rollup --config",
+    "watch:ts": "tsc --watch",
+    "watch:sw:ts": "tsc --p tsconfig.sw.json --watch",
+    "watch:js": "rollup --config --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.1.0",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^2.70.0"
+  }
+}
