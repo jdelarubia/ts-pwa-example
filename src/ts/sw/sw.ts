@@ -18,7 +18,7 @@ self.addEventListener("install", async (event: Event) => {
   return;
 });
 
-// cache-first then network
+// cache-first then network as fallback
 self.addEventListener("fetch", async (event: any) => {
   try {
     const cachedResponse = await caches.match(event.request);
