@@ -15,6 +15,7 @@ self.addEventListener("install", async (event: Event) => {
   } catch (error: any) {
     console.error(error);
   }
+  return;
 });
 
 // cache-first then network
@@ -26,4 +27,5 @@ self.addEventListener("fetch", async (event: any) => {
   } catch (error: any) {
     console.error(error);
   }
+  return;
 });
