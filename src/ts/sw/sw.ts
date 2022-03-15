@@ -1,5 +1,5 @@
 const cacheVersion = 1;
-const cacheName = `PWAEasy-v${cacheVersion}`;
+const cacheName = `PWAEasy-static-v${cacheVersion}`;
 const resources = [
   "/",
   "index.html",
