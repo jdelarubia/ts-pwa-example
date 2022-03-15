@@ -1,7 +1,19 @@
 {
   "name": "PWAEasy",
   "short_name": "PWA Easy",
+  "start_url": "/index.html",
+  "id": "/index.html",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#161650",
+  "theme_color": "#782121",
   "icons": [
+    {
+      "src": "/img/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
     {
       "src": "/img/icon-144x144.png",
       "sizes": "144x144",
@@ -17,11 +29,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "start_url": "/index.html",
-  "id": "/index.html",
-  "display": "standalone",
-  "orientation": "portrait-primary",
-  "background_color": "#161650ff",
-  "theme_color": "#782121ff"
+  ]
 }
