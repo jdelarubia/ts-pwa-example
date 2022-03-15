@@ -1,4 +1,4 @@
-import { WebWorkerEvent } from "./types";
+import { WebWorkerEvent } from "./sw/types";
 import { AddToHome } from "./add-to-home/addToHome";
 
 // **********************************************
