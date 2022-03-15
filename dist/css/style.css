@@ -25,3 +25,40 @@ footer {
   position: fixed;
   width: 100%;
 }
+/* ******************************************* */
+/* add to home component                       */
+/* ******************************************* */
+add-to-home {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  background: var(--dark-blue);
+  border-radius: var(--border-radius);
+  margin: 0.3em 0;
+  opacity: 0.8;
+  padding: 0.5em;
+  visibility: hidden;
+}
+add-to-home button {
+  margin-left: var(3em);
+}
+
+add-to-home.show {
+  visibility: visible;
+}
+
+add-to-home button {
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--camel);
+  padding: 0.3rem;
+  margin-left: 1em;
+  font-size: large;
+  font-weight: bold;
+  height: calc(var(--btn-thumb-size) - 1.5rem);
+  width: var(--btn-thumb-size);
+}
