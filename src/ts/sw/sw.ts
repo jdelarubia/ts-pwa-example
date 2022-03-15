@@ -32,3 +32,15 @@ self.addEventListener("fetch", async (event: WebWorkerEvent) => {
   }
   return;
 });
+
+// activate event
+self.addEventListener("activate", async (event: WebWorkerEvent) => {
+  const keys: string[] = await caches.keys();
+  keys.forEach((cacheName) => {
+    if (cacheName !== CACHENAME) {
+      caches.delete(cacheName);
+    }
+  });
+
+  return (self as any).clients!.claim();
+});
