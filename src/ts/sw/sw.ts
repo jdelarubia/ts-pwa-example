@@ -17,7 +17,7 @@ self.addEventListener("install", async (event: WebWorkerEvent) => {
     const cache = await caches.open(CACHENAME);
     return await cache.addAll(RESOURCES);
   } catch (error: any) {
-    console.error(error);
+    console.error("[SW] Install failed", error);
   }
   return;
 });
@@ -26,9 +26,9 @@ self.addEventListener("install", async (event: WebWorkerEvent) => {
 self.addEventListener("fetch", async (event: WebWorkerEvent) => {
   try {
     const cachedResponse = await caches.match(event.request);
-    return cachedResponse || fetch(event.request);
+    return cachedResponse || (await fetch(event.request));
   } catch (error: any) {
-    console.error(error);
+    console.error("[SW] Fetch failed", error);
   }
   return;
 });
