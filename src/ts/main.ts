@@ -1,5 +1,8 @@
 import { AddToHome } from "./add-to-home/addToHome";
 
+// **********************************************
+// Registration
+// **********************************************
 function registerSW() {
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", async () => {
@@ -13,6 +16,9 @@ function registerSW() {
   }
 } //.
 
+// **********************************************
+// Installation
+// **********************************************
 function registerBeforeInstallEvent() {
   window.addEventListener("beforeinstallprompt", async (event: Event) => {
     event.preventDefault();
