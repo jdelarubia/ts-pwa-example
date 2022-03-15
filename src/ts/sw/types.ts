@@ -1,5 +1,5 @@
 type WebWorkerEvent = Partial<
-  Event & { request?: Request; waitUntil?: Function }
+  Event & { request?: RequestInfo; waitUntil?: Function }
 >;
 
 export { WebWorkerEvent };
