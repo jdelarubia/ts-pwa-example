@@ -47,6 +47,13 @@ function triggerInstallationPrompt() {
 } //.
 
 // **********************************************
+function registerInstallationEvent() {
+  window.addEventListener("appinstalled", async (event: Event) => {
+    console.log("APP is installed");
+  });
+} //.
+
+// **********************************************
 // Main App
 // **********************************************
 const addToHomeBtn = new AddToHome();
