@@ -1,3 +1,4 @@
+import { WebWorkerEvent } from "./types";
 import { AddToHome } from "./add-to-home/addToHome";
 
 // **********************************************
@@ -21,12 +22,15 @@ function registerSW() {
 // Installation
 // **********************************************
 function registerBeforeInstallEvent() {
-  window.addEventListener("beforeinstallprompt", async (event: Event) => {
-    event.preventDefault();
-    deferredPrompt = event;
-    addToHomeBtn.show();
-    triggerInstallationPrompt();
-  });
+  window.addEventListener(
+    "beforeinstallprompt",
+    async (event: WebWorkerEvent) => {
+      event.preventDefault!();
+      deferredPrompt = event;
+      addToHomeBtn.show();
+      triggerInstallationPrompt();
+    }
+  );
 } //.
 
 function triggerInstallationPrompt() {
@@ -49,7 +53,7 @@ function triggerInstallationPrompt() {
 
 // **********************************************
 function registerInstallationEvent() {
-  window.addEventListener("appinstalled", async (event: Event) => {
+  window.addEventListener("appinstalled", async (event: WebWorkerEvent) => {
     console.log("APP is installed");
   });
 } //.

@@ -1,3 +1,5 @@
+import { WebWorkerEvent } from "../types";
+
 const cacheVersion = 1;
 const cacheName = `PWAEasy-static-v${cacheVersion}`;
 const resources = [
@@ -6,10 +8,6 @@ const resources = [
   "/js/bundle.js",
   "https://fonts.googleapis.com/css2?&family=Open+Sans:wght@300&family=Roboto:wght@700&display=swap",
 ];
-
-type WebWorkerEvent = Partial<
-  Event & { request?: Request; waitUntil?: Function }
->;
 
 self.addEventListener("install", async (event: WebWorkerEvent) => {
   console.log("[SW] install event fired!");
