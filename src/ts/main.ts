@@ -1,3 +1,5 @@
+import { AddToHome } from "./add-to-home/addToHome";
+
 function registerSW() {
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", async () => {
@@ -38,6 +40,12 @@ function triggerInstallationPrompt() {
   });
 } //.
 
+// **********************************************
+// Main App
+// **********************************************
+const addToHomeBtn = new AddToHome();
+const footer = <HTMLElement>document.querySelector("footer");
+footer.appendChild(addToHomeBtn);
 
 let deferredPrompt: any; // save prompt for later use
 registerSW();
