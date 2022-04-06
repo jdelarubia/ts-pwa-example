@@ -1,5 +1,7 @@
 type WebWorkerEvent = Partial<
-  Event & { request?: RequestInfo; waitUntil?: Function }
+  Event & { request?: Request; waitUntil?: Function; respondWith?: Function }
 >;
 
-export { WebWorkerEvent };
+type WebWorkerSelf = Partial<Window & { skipWaiting: Function }>;
+
+export { WebWorkerEvent, WebWorkerSelf };
