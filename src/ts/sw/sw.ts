@@ -2,10 +2,14 @@ import { WebWorkerEvent, WebWorkerSelf } from "./types";
 
 const CACHEVERSION = 2;
 const CACHENAME = `PWAEasy-static-v${CACHEVERSION}`;
-const RESOURCES = [
+const ASSETS = [
   "/",
-  "index.html",
+  "/index.html",
+  "/manifest.json",
+  "/css/style.css",
   "/js/bundle.js",
+  "/img/favicon.png",
+  "/img/icon-144x144.png",
   "https://fonts.googleapis.com/css2?&family=Open+Sans:wght@300&family=Roboto:wght@700&display=swap",
 ];
 
@@ -13,8 +17,7 @@ const RESOURCES = [
 self.addEventListener("install", async (event: WebWorkerEvent) => {
   console.log("[SW] INSTALL event");
   try {
-    const cache = await caches.open(CACHENAME);
-    return await cache.addAll(RESOURCES);
+    return await cache.addAll(ASSETS);
   } catch (error: any) {
     console.error("[SW] Install failed", error);
   }
