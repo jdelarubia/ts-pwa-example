@@ -22,7 +22,8 @@ self.addEventListener("install", async (event: WebWorkerEvent) => {
   } catch (error: any) {
     console.error("[SW] Install failed", error);
   }
-  return;
+
+  (self as WebWorkerSelf).skipWaiting();
 });
 
 // fetch event. Cache-first then network as fallback
