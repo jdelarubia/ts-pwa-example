@@ -40,6 +40,7 @@ self.addEventListener("activate", async (event: WebWorkerEvent) => {
   console.log("[SW] ACTIVATE event");
   const keys: string[] = await caches.keys();
   keys.forEach((cacheName) => {
+    if (cacheName !== CACHENAME) {
       console.log(`deleting cache ${cacheName}`);
       caches.delete(cacheName);
     }
