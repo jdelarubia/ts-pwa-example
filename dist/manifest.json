@@ -1,7 +1,7 @@
 {
   "name": "PWAEasy",
   "short_name": "PWA Easy",
-  "start_url": "/index.html",
+  "start_url": "/index.html?from=homescreen",
   "id": "/index.html",
   "display": "standalone",
   "orientation": "portrait-primary",
