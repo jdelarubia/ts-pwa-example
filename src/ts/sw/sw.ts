@@ -17,6 +17,7 @@ const ASSETS = [
 self.addEventListener("install", async (event: WebWorkerEvent) => {
   console.log("[SW] INSTALL event");
   try {
+    const cache = <Cache>await caches.open(CACHENAME);
     return await cache.addAll(ASSETS);
   } catch (error: any) {
     console.error("[SW] Install failed", error);
