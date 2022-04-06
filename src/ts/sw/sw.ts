@@ -11,8 +11,7 @@ const RESOURCES = [
 
 // install event
 self.addEventListener("install", async (event: WebWorkerEvent) => {
-  console.log("[SW] install event fired!");
-  // console.log(event);
+  console.log("[SW] INSTALL event");
   try {
     const cache = await caches.open(CACHENAME);
     return await cache.addAll(RESOURCES);
@@ -35,9 +34,10 @@ self.addEventListener("fetch", async (event: WebWorkerEvent) => {
 
 // activate event
 self.addEventListener("activate", async (event: WebWorkerEvent) => {
+  console.log("[SW] ACTIVATE event");
   const keys: string[] = await caches.keys();
   keys.forEach((cacheName) => {
-    if (cacheName !== CACHENAME) {
+      console.log(`deleting cache ${cacheName}`);
       caches.delete(cacheName);
     }
   });
