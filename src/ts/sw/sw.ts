@@ -28,13 +28,22 @@ self.addEventListener("install", async (event: WebWorkerEvent) => {
 
 // fetch event. Cache-first then network as fallback
 self.addEventListener("fetch", async (event: WebWorkerEvent) => {
-  try {
-    const cachedResponse = await caches.match(event.request);
-    return cachedResponse || (await fetch(event.request));
-  } catch (error: any) {
-    console.error("[SW] Fetch failed", error);
-  }
-  return;
+  console.log("[SW] FETCHING", event.request.url); //!debug
+
+  // TS Async/Await
+  // See: https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent
+  event.respondWith(
+    (async function () {
+      try {
+        const cache = await caches.open(CACHENAME);
+        const cachedResponse = await cache.match(event.request);
+        return cachedResponse || fetch(event.request);
+      } catch (error: any) {
+        console.error("[SW] Fetch failed", error);
+      }
+    })()
+  );
+
 });
 
 // activate event
