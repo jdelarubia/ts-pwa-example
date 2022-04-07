@@ -16,6 +16,19 @@ const ASSETS = [
 // install event
 self.addEventListener("install", async (event: WebWorkerEvent) => {
   console.log("[SW] INSTALL event");
+  // JS way
+  // event!.waitUntil(
+  //   caches
+  //     .open(CACHENAME)
+  //     .then((cache) => {
+  //       return cache.addAll(ASSETS);
+  //     })
+  //     .catch((err) => {
+  //       console.log(`[SW] Error while opening ${CACHENAME}`);
+  //     })
+  // );
+
+  // TS Async/Await
   try {
     const cache = <Cache>await caches.open(CACHENAME);
     return await cache.addAll(ASSETS);
@@ -44,6 +57,15 @@ self.addEventListener("fetch", async (event: WebWorkerEvent) => {
     })()
   );
 
+  // JS way
+  // event.respondWith(
+  //   caches
+  //     .match(event.request)
+  //     .then((cachedResponse) => cachedResponse || fetch(event!.request))
+  //     .catch((error) => {
+  //       console.log(`[SW] Error while fetching. ${error}`);
+  //     })
+  // );
 });
 
 // activate event
