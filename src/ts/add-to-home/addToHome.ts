@@ -1,6 +1,7 @@
 const template = document.createElement("template");
-template.innerHTML = `<p>Add to home screen?</p>
-<button id="addToHomeScreenBtn">Yes</button>`;
+template.innerHTML = `<span class="close-btn">&#10006;</span>
+<p>Add to home screen?</p>
+<button class="install-btn">Yes</button>`;
 
 class AddToHome extends HTMLElement {
   constructor() {
