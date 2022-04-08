@@ -19,39 +19,6 @@ function registerSW() {
 } //.
 
 // **********************************************
-// Installation
-// **********************************************
-function registerBeforeInstallEvent() {
-  window.addEventListener(
-    "beforeinstallprompt",
-    async (event: WebWorkerEvent) => {
-      event.preventDefault!();
-      deferredPrompt = event;
-      addToHomeBtn.show();
-      triggerInstallationPrompt();
-    }
-  );
-} //.
-
-function triggerInstallationPrompt() {
-  const btn = <HTMLButtonElement>document.querySelector("#addToHomeScreenBtn");
-  btn.addEventListener("click", async (event: Event) => {
-    try {
-      const choice = await deferredPrompt.prompt();
-      console.log(choice);
-
-      if (choice.outcome === "accepted") {
-        console.log("User agreed to add button to screen");
-      }
-      deferredPrompt = null;
-      addToHomeBtn.remove();
-    } catch (err) {
-      console.log(err);
-    }
-  });
-} //.
-
-// **********************************************
 function registerInstallationEvent() {
   window.addEventListener("appinstalled", async (event: WebWorkerEvent) => {
     console.log("APP is installed");
@@ -67,5 +34,3 @@ footer.appendChild(addToHomeBtn);
 
 let deferredPrompt: any; // save prompt for later use
 registerSW();
-registerBeforeInstallEvent();
-registerInstallationEvent();
