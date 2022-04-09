@@ -1,3 +1,8 @@
+/**
+ * addToHome.ts
+ * Add to home screen component.
+ */
+
 const css = `<style>
 add-to-home {
   display: flex;
@@ -49,15 +54,30 @@ class AddToHome extends HTMLElement {
 
   constructor() {
     super();
+    this.show();
   } //.
 
   connectedCallback() {
     this.appendChild(template.content.cloneNode(true));
-    const closeBtn = <HTMLSpanElement>this.querySelector(".close-btn");
 
+    const closeBtn = <HTMLSpanElement>this.querySelector(".close-btn");
     closeBtn.addEventListener("click", async (event: Event) => {
+      event.preventDefault();
       this.remove();
     });
+
+    const addToHomeBtn = <HTMLButtonElement>this.querySelector(".install-btn");
+    addToHomeBtn.addEventListener("click", async (event: Event) => {
+      event.preventDefault();
+      try {
+        const choice = await this.prompt.prompt();
+      } catch (err) {
+        console.log(err);
+      }
+      this.prompt = null;
+      this.remove();
+    });
+
     this.registerBeforeInstallEvent();
   } //.
 
@@ -72,28 +92,7 @@ class AddToHome extends HTMLElement {
   private registerBeforeInstallEvent() {
     window.addEventListener("beforeinstallprompt", async (event: Event) => {
       event.preventDefault();
-      this.prompt = event;
-      this.show();
-      this.triggerInstallationPrompt();
-    });
-  } //.
-
-  private triggerInstallationPrompt() {
-    const addToHomeBtn = <HTMLButtonElement>this.querySelector(".install-btn");
-
-    addToHomeBtn.addEventListener("click", async (event: Event) => {
-      try {
-        const choice = await this.prompt.prompt();
-        console.log(choice);
-
-        if (choice.outcome === "accepted") {
-          console.log("User agreed to add button to screen");
-        }
-        this.prompt = null;
-        addToHomeBtn.remove();
-      } catch (err) {
-        console.log(err);
-      }
+      this.prompt = event; // save prompt for later use
     });
   } //.
 } //. AddToHome
