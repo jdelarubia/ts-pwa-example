@@ -32,5 +32,4 @@ const addToHomeBtn = new AddToHome();
 const footer = <HTMLElement>document.querySelector("footer");
 footer.appendChild(addToHomeBtn);
 
-let deferredPrompt: any; // save prompt for later use
 registerSW();
