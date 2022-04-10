@@ -9,3 +9,6 @@ Example of a simple PWA with TypeScript in which I followed the step by step tut
 - [Google Chrome Developers Why Build PWAs](https://www.youtube.com/playlist?list=PLNYkxOF6rcIAvsHlT44x-Kve2lG8CrDip)
 - [Google Chrome Developers PWA Roadshow](https://www.youtube.com/playlist?list=PLNYkxOF6rcICnIOm4cfylT0-cEfytBtYt)
 - [MDN FetchEvent](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent)
+- [MDN ServiceWorker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
+- [MDN Using Service Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers)
+
