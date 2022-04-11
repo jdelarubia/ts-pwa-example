@@ -3,6 +3,8 @@
  * Add to home screen component.
  */
 
+import { ExtendableEvent, WebWorkerEvent } from "../sw/types";
+
 const css = `<style>
 add-to-home {
   display: flex;
@@ -40,6 +42,16 @@ add-to-home button.install-btn {
 add-to-home.show {
   visibility: visible;
   opacity: 0.9;
+}
+/* Don't show once installed */
+@media all and (display-mode: standalone) {
+  add-to-home {
+    visibility: hidden;
+    display: none;
+  }
+  add-to-home.show {
+    display: none;
+  }
 }
 </style>`;
 const template = document.createElement("template");
@@ -95,13 +107,6 @@ class AddToHome extends HTMLElement {
 
   remove() {
     this.classList.remove("show");
-  } //.
-
-  private registerBeforeInstallEvent() {
-    window.addEventListener("beforeinstallprompt", async (event: Event) => {
-      event.preventDefault();
-      this.prompt = event; // save prompt for later use
-    });
   } //.
 } //. AddToHome
 
