@@ -1,15 +1,19 @@
-type WebWorkerEvent = Partial<
-  Event & {
+type ExtendableEvent = Partial<Event> & {
+  waitUntil?: Function;
+};
+
+type BeforeInstallPromptEvent = (Partial<Event> & { prompt?: Function }) | null;
+
+type WebWorkerEvent = Partial<Event> &
+  Partial<{
     readonly clientId: string;
     readonly preloadResponse: Promise<Response>;
     readonly replacesClientId: string;
     readonly resultingClientId: string;
     readonly request?: Request;
-    waitUntil?: Function;
     respondWith?: Function;
-  }
->;
+  }>;
 
-type WebWorkerSelf = Partial<Window & { skipWaiting: Function }>;
+type WebWorker = Partial<Window> & { skipWaiting?: Function };
 
-export { WebWorkerEvent, WebWorkerSelf };
+export { WebWorkerEvent, WebWorker, ExtendableEvent, BeforeInstallPromptEvent };
