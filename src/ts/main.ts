@@ -31,3 +31,4 @@ function registerInstallationEvent() {
 const addToHomeBtn = new AddToHome(); // triggers the show method.
 
 registerSW();
+registerInstallationEvent();
