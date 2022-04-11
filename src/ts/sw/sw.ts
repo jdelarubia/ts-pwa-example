@@ -36,7 +36,7 @@ self.addEventListener("install", async (event: WebWorkerEvent) => {
     console.error("[SW] Install failed", error);
   }
 
-  (self as WebWorkerSelf).skipWaiting(); // Forces activation
+  await (self as WebWorker).skipWaiting(); // Forces activation
 });
 
 // fetch event. Cache-first then network as fallback
@@ -79,5 +79,5 @@ self.addEventListener("activate", async (event: WebWorkerEvent) => {
     }
   });
 
-  return (self as any).clients!.claim();
+  await (self as any).clients.claim();
 });
