@@ -1,4 +1,4 @@
-import { WebWorkerEvent, WebWorkerSelf } from "./types";
+import { WebWorkerEvent, WebWorker } from "./types";
 
 const CACHEVERSION = 2;
 const CACHENAME = `PWAEasy-static-v${CACHEVERSION}`;
