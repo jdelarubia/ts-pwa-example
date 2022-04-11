@@ -74,16 +74,19 @@ class AddToHome extends HTMLElement {
     const addToHomeBtn = <HTMLButtonElement>this.querySelector(".install-btn");
     addToHomeBtn.addEventListener("click", async (event: Event) => {
       event.preventDefault();
-      try {
-        const choice = await this.prompt.prompt();
-      } catch (err) {
-        console.log(err);
-      }
-      this.prompt = null;
-      this.remove();
+      this.triggerPrompt();
     });
+  } //.
 
-    this.registerBeforeInstallEvent();
+  private async triggerPrompt() {
+    try {
+      const userChoice = await this.prompt.prompt();
+      console.log("choice", userChoice);
+    } catch (err: any) {
+      console.log(err);
+    }
+    this.prompt = null;
+    this.remove();
   } //.
 
   show() {
