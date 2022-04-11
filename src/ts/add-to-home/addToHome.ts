@@ -60,6 +60,11 @@ class AddToHome extends HTMLElement {
   connectedCallback() {
     this.appendChild(template.content.cloneNode(true));
 
+    window.addEventListener("beforeinstallprompt", async (event: Event) => {
+      event.preventDefault();
+      this.prompt = await event; // save prompt for later use
+    });
+
     const closeBtn = <HTMLSpanElement>this.querySelector(".close-btn");
     closeBtn.addEventListener("click", async (event: Event) => {
       event.preventDefault();
