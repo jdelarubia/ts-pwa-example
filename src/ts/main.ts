@@ -28,8 +28,6 @@ function registerInstallationEvent() {
 // **********************************************
 // Main App
 // **********************************************
-const addToHomeBtn = new AddToHome();
-const footer = <HTMLElement>document.querySelector("footer");
-footer.appendChild(addToHomeBtn);
+const addToHomeBtn = new AddToHome(); // triggers the show method.
 
 registerSW();
