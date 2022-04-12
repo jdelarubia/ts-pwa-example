@@ -28,7 +28,12 @@ function registerInstallationEvent() {
 // **********************************************
 // Main App
 // **********************************************
-const addToHomeBtn = new AddToHome(); // triggers the show method.
+// doesn't show dialog if the event is not supported
+if ("onbeforeinstallprompt" in window) { 
+  const addToHomeDiv = new AddToHome(); // triggers the show method.
+  const footer = <HTMLDivElement>document.querySelector("footer");
+  footer.appendChild(addToHomeDiv);
+}
 
 registerSW();
 registerInstallationEvent();
