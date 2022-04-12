@@ -80,13 +80,13 @@ class AddToHome extends HTMLElement {
     const closeBtn = <HTMLSpanElement>this.querySelector(".close-btn");
     closeBtn.addEventListener("click", async (event: Event) => {
       event.preventDefault();
-      this.remove();
+      this.hide();
     });
 
     const addToHomeBtn = <HTMLButtonElement>this.querySelector(".install-btn");
     addToHomeBtn.addEventListener("click", async (event: Event) => {
       event.preventDefault();
-      this.triggerPrompt();
+      await this.triggerPrompt();
     });
   } //.
 
@@ -98,14 +98,14 @@ class AddToHome extends HTMLElement {
       console.log(err);
     }
     this.prompt = null;
-    this.remove();
+    this.hide();
   } //.
 
   show() {
     this.classList.add("show");
   } //.
 
-  remove() {
+  hide() {
     this.classList.remove("show");
   } //.
 } //. AddToHome
