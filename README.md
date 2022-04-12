@@ -13,4 +13,6 @@ Example of a simple PWA with TypeScript in which I followed the step by step tut
 - [MDN Using Service Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers)
 - [GITHUB The Service Worker Cookbook](https://github.com/mdn/serviceworker-cookbook) Multiple examples
 
+## Caveats
 
+- in Firefox, the `onbeforeinstall` event is not supported, which leads to throwing erros when we try to call the `.prompt()` method (`this.prompt is undefined`)
