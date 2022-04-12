@@ -11,4 +11,6 @@ Example of a simple PWA with TypeScript in which I followed the step by step tut
 - [MDN FetchEvent](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent)
 - [MDN ServiceWorker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
 - [MDN Using Service Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers)
+- [GITHUB The Service Worker Cookbook](https://github.com/mdn/serviceworker-cookbook) Multiple examples
+
 
